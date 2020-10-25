@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Let's get the packages we need
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+library(janeaustenr)
+library(skimr)
+library(magrittr)
+```
+## Let's import our xlsx
+
+```{r}
+councildata <- read_csv('councildata.csv')
+```
+
+```{r}
+rollingaverages <- read_csv('rollingaverages.csv')
+```
+```{r}
+names(rollingaverages)
+```
+
+```{r}
+## There are some ugly names in those column heads so lets rename them. I couldn't find a way to do this elegantly so did it based on column number
+names(rollingaverages) [4] <- "msoa"
+```
+
+```{r}
+names(rollingaverages) [5] <- "msoa welsh"
+```
+
+```{r}
+names(rollingaverages) [1] <- "period"
+```
+```{r}
+  names(rollingaverages) [2] <- "council" 
+```
+
+```{r}
+ names(rollingaverages) [3] <- "msoa.code"
+```
+
+```{r}
+  names(rollingaverages) [6] <- "cases"
+```
+```{r}
+  names(rollingaverages) [7] <- "incidences"
+```
+
+```{r}
+## Now I want to re-order my data and only keep the bits I want to use and save that to a new dataframe
+cleancouncils <- select(rollingaverages, council, msoa, cases, incidences, period, msoa.code)
+```
+
+```{r}
+## Now I want to see which council has the highest incidence rate for the 7 day rolling average
+
+highestincidences <- cleancouncils %>%
+   group_by(msoa,council, period) %>%
+    summarise(maxincidence = max(incidences))
+
+```
+
+```{r}
+write_csv(highestincidences, "highestincidences.csv")
+```
+
+```{r}
+cleancouncils %>%
+  filter(period == "Rolling 7 days (15 Oct - 21 Oct)") %>%
+arrange(desc(incidences))
+```
+
