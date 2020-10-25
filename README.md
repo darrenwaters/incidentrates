@@ -26,7 +26,7 @@ What I wanted to do was then sort from high to low in terms of the incidences to
 
 But.... when I sorted incidences by size using arrange(desc(incidences)) it seems to be ignoring higher values which have commas in the number. Not sure why.
 
-I also wanted to filter on a particular time period - which is written as a character string - e.g. "Rolling 7 days (15 Oct - 21 Oct)" - and while I think that worked when I then sorted from highest to lowest I couldn't work out why that was.
+I also wanted to filter on a particular time period - which is written as a character string - e.g. "Rolling 7 days (15 Oct - 21 Oct)" - and while I think that worked when I then sorted from highest to lowest I couldn't work out why I was still seeing higher numbers below smaller numbers. 
 
 Exporting the csv to Excel and then sorting and filtering manually led to an interesting finding. Cathays South has the highest 7 day rolling averages of Covid incidences per 100,000 people - 2,060, more than twice the rate of any other local area in Wales.
 
