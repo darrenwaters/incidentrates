@@ -30,7 +30,7 @@ I also wanted to filter on a particular time period - which is written as a char
 
 Exporting the csv to Excel and then sorting and filtering manually led to an interesting finding. Cathays South has the highest 7 day rolling averages of Covid incidences per 100,000 people - 2,060, more than twice the rate of any other local area in Wales.
 
-
+In fact, what's clear is that areas with high student populations in Cardiff are hotspots for Covid currently.
 
 
 
